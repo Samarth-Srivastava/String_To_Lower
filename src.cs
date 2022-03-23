@@ -2,11 +2,12 @@ using System.Text;
 
 namespace String_To_Lower{
 	public class Solution{
-		public string solve(List<char> A){
+		public List<char> solve(List<char> A){
 			//var ans = ToLower(A);
 			//var ans = ToUpper(A);
 			//var ans = new List<char> { IsAlphaNumeric(A).ToString()[0] };
-			var ans = IsPalindrome(new String(A.ToArray()));
+			//var ans = IsPalindrome(new String(A.ToArray()));
+			var ans = new List<char> { CheckIfChractersInStringCanBeAPalindrome(new String(A.ToArray())).ToString()[0] };
 			return ans;
 		}
 
@@ -142,6 +143,36 @@ namespace String_To_Lower{
             }
             return sb.ToString();
         }
+
+		public int CheckIfChractersInStringCanBeAPalindrome(string A){
+			int N = A.Count();
+
+			List<int> AplhaFreq = new List<int>(26);
+			for(int i = 0; i < 26; i++){
+				AplhaFreq.Insert(i, 0);
+			}
+
+			for(int i = 0; i < N; i++){
+				int asciichar = A[i];
+				int pos = asciichar - 97;
+				AplhaFreq[pos] = AplhaFreq[pos] + 1;
+			}
+
+			int AplhaFreqLen = AplhaFreq.Count();
+			int oddcount = 0;
+			for(int i = 0; i < AplhaFreqLen; i++){
+				if(AplhaFreq[i]%2 == 1){
+					oddcount++;
+				}
+			}
+
+			if(oddcount < 2){
+				return 1;
+			}
+			else{
+				return 0;
+			}
+		}
 
 	}
 }

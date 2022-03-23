@@ -11,10 +11,10 @@ namespace String_To_Lower{
 			List<char> charArr = args[0].Split(' ').Select(a => Convert.ToChar(a)).ToList();
 
 			var lower = s.solve(charArr);
-			// foreach (char item in lower)
-			// {
-				Console.Write(lower);
-			//}
+			foreach (char item in lower)
+			{
+				Console.Write(item + " ");
+			}
 			
 		}
 	}
